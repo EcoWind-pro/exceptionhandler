@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.ResponseStatus
 
 @ControllerAdvice
 class GlobalExceptionHandler {
@@ -25,6 +26,7 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception::class)
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
     fun handleException(e: Exception): ResponseEntity<ErrorDetails> {
         val message: String = e.message ?: "Unexpected error"
         log.error(message)

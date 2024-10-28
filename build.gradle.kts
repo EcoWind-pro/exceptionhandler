@@ -17,6 +17,9 @@ publishing {
     }
 }
 
+val coroutinesVersion = "1.9.0"
+val utilsVersion = "1.0.0"
+
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 kotlin.compilerOptions.freeCompilerArgs.addAll("-Xjsr305=strict")
 
@@ -29,9 +32,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$coroutinesVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("ecowind.ru:utils:$utilsVersion")
 }
 
 tasks.withType<Test> {
